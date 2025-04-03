@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Загрузка .vcf файла</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        .upload-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 320px;
+        }
+        .file-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .file-input {
+            display: none;
+        }
+        .custom-file-upload,
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+            display: block;
+            margin-top: 5px;
+            text-align: center;
+        }
+        .custom-file-upload:hover {
+            background: #0056b3;
+        }
+        .file-name {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: block;
+            text-align: center;
+        }
+        button {
+            background: #28a745;
+        }
+        button:hover {
+            background: #218838;
+        }
+        .view-link {
+            display: block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        .view-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Загрузите файл контактов (.vcf)</h1>
+
+    <form action="{{ url_for('upload_file') }}" method="POST" enctype="multipart/form-data" class="upload-container">
+        <label class="file-label">Выберите файл:</label>
+        <label for="file" class="custom-file-upload">Выбрать файл</label>
+        <input type="file" id="file" name="file" class="file-input" accept=".vcf" required>
+        <span id="file-name" class="file-name">Файл не выбран</span>
+        <button type="submit">Загрузить</button>
+    </form>
+
+    <a class="view-link" href="{{ url_for('view_contacts') }}">Просмотреть контакты</a>
+
+    <script>
+        document.getElementById('file').addEventListener('change', function() {
+            var fileName = this.files[0] ? this.files[0].name : "Файл не выбран";
+            document.getElementById('file-name').textContent = fileName;
+        });
+    </script>
+</body>
+</html>

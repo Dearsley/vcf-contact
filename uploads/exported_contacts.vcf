@@ -1,0 +1,48 @@
+BEGIN:VCARD
+
+VERSION:3.0
+
+ADR:Россия;Москва;ул. Северодвинская\, д. 19;;;;
+
+EMAIL:ganohin431@mail.ru
+
+FN:Григорий Анохин
+
+TEL;TYPE=work:
+
+TEL;TYPE=home:+79104865269
+
+END:VCARD
+
+BEGIN:VCARD
+
+VERSION:3.0
+
+ADR:Россия;Санкт-Петербург;Невский пр.  д. 20;;;;
+
+EMAIL:maria@example.com
+
+FN:Марина Лаптенко
+
+TEL;TYPE=work:+79263334455
+
+TEL;TYPE=home:+74957654321
+
+END:VCARD
+
+BEGIN:VCARD
+
+VERSION:3.0
+
+ADR:Россия;Екатеринбург;ул. Мира, д. 5;;;;
+
+EMAIL:alexey@example.com
+
+FN:Алексей Петров
+
+TEL;TYPE=work:+79501112233
+
+TEL;TYPE=home:+74959876543
+
+END:VCARD
+
