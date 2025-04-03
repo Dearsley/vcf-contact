@@ -75,7 +75,6 @@ def view_contacts():
                     'address': address
                 }
 
-                # Фильтрация контактов по запросу
                 if search_query in name.lower() or \
                         search_query in (work_phone or '').lower() or \
                         search_query in (home_phone or '').lower() or \
@@ -123,7 +122,6 @@ def edit_contact(index):
             else:
                 vcard.add('adr').value = vobject.vcard.Address(street=[request.form['address']])
 
-            # Сохранение изменений обратно в файл
             with open(filepath, 'w', encoding='utf-8') as file:
                 file.writelines([vc.serialize() for vc in contacts])
 

@@ -84,14 +84,10 @@
 
 <div class="container">
     <h1>Список контактов</h1>
-
-    <!-- Форма поиска -->
     <form class="search-form" method="GET" action="{{ url_for('view_contacts') }}">
         <input type="text" name="search" class="search-input" placeholder="Поиск контактов..." value="{{ search_query }}">
         <button type="submit" class="search-btn">Поиск</button>
     </form>
-
-    <!-- Таблица с контактами -->
     <table>
         <thead>
             <tr>
@@ -119,13 +115,11 @@
         </tbody>
     </table>
 
-    <!-- Кнопки экспорта -->
     <div style="text-align: center; margin-top: 20px;">
         <a href="{{ url_for('export_vcf') }}" class="btn btn-export">Экспорт в VCF</a>
         <a href="{{ url_for('export_csv') }}" class="btn btn-export">Экспорт в CSV</a>
     </div>
 
-    <!-- Кнопка возврата -->
     <a href="{{ url_for('index') }}" class="back-btn">Назад</a>
 </div>
 
