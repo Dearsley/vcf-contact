@@ -51,9 +51,14 @@ def view_contacts():
 
                 if hasattr(vcard, 'tel'):
                     for tel in vcard.contents['tel']:
-                        if 'work' in tel.params.get('TYPE', []):
+                        tel_type = tel.params.get('TYPE', [])
+                        if 'work' in tel_type:
                             work_phone = tel.value
-                        elif 'home' in tel.params.get('TYPE', []):
+                        elif 'home' in tel_type:
+                            home_phone = tel.value
+                        elif 'cell' in tel_type or 'mobile' in tel_type:
+                            home_phone = tel.value
+                        elif not home_phone:
                             home_phone = tel.value
 
                 if hasattr(vcard, 'adr'):
@@ -106,9 +111,10 @@ def edit_contact(index):
 
             if hasattr(vcard, 'tel'):
                 for tel in vcard.contents['tel']:
-                    if 'work' in tel.params.get('TYPE', []):
+                    tel_type = tel.params.get('TYPE', [])
+                    if 'work' in tel_type:
                         tel.value = request.form['work_phone']
-                    elif 'home' in tel.params.get('TYPE', []):
+                    elif 'home' in tel_type or 'cell' in tel_type or 'mobile' in tel_type:
                         tel.value = request.form['home_phone']
             else:
                 vcard.add('tel').value = request.form['work_phone']
@@ -139,9 +145,14 @@ def edit_contact(index):
 
         if hasattr(vcard, 'tel'):
             for tel in vcard.contents['tel']:
-                if 'work' in tel.params.get('TYPE', []):
+                tel_type = tel.params.get('TYPE', [])
+                if 'work' in tel_type:
                     contact_data['work_phone'] = tel.value
-                elif 'home' in tel.params.get('TYPE', []):
+                elif 'home' in tel_type:
+                    contact_data['home_phone'] = tel.value
+                elif 'cell' in tel_type or 'mobile' in tel_type:
+                    contact_data['home_phone'] = tel.value
+                elif not contact_data['home_phone']:
                     contact_data['home_phone'] = tel.value
 
         if hasattr(vcard, 'adr'):
@@ -192,9 +203,14 @@ def export_csv():
 
                 if hasattr(vcard, 'tel'):
                     for tel in vcard.contents['tel']:
-                        if 'work' in tel.params.get('TYPE', []):
+                        tel_type = tel.params.get('TYPE', [])
+                        if 'work' in tel_type:
                             work_phone = tel.value
-                        elif 'home' in tel.params.get('TYPE', []):
+                        elif 'home' in tel_type:
+                            home_phone = tel.value
+                        elif 'cell' in tel_type or 'mobile' in tel_type:
+                            home_phone = tel.value
+                        elif not home_phone:
                             home_phone = tel.value
 
                 if hasattr(vcard, 'adr'):
